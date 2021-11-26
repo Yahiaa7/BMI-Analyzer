@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790775241128",
+    "project_id": "bmi-analyzer-9855a",
+    "storage_bucket": "bmi-analyzer-9855a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790775241128:android:ec7879aa306c0bbe70259d",
+        "android_client_info": {
+          "package_name": "com.example.bmianalyzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790775241128-oc8ee40lo24b8cb8pveksvudc3bhklpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzdPd03rgyDyLsZ2FDvNLEreKu1_xRsVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790775241128-oc8ee40lo24b8cb8pveksvudc3bhklpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
