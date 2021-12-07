@@ -1,7 +1,8 @@
 package com.example.bmianalyzer.Activities;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -13,10 +14,11 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+
 import com.example.bmianalyzer.Models.Record;
 import com.example.bmianalyzer.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,8 +40,10 @@ public class AddRecord extends AppCompatActivity {
         setContentView(R.layout.activity_add_record);
 
 
+        Toolbar toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         picker_weight = findViewById(R.id.pickerWeight);
         picker_height = findViewById(R.id.pickerHeight);
@@ -70,6 +74,8 @@ public class AddRecord extends AppCompatActivity {
         time = findViewById(R.id.Time);
         time.setCursorVisible(false);
         time.setFocusable(false);
+
+
     }
 
 

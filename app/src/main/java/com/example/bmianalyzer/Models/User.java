@@ -98,7 +98,6 @@ public class User {
     }
 
     public int getAgePercentage() {
-        System.out.println("user date of birthhhhhhhhh: "+ User.getUser().getDateOfBirth());
         String[] d = User.getUser().getDateOfBirth().split("/");
         String mYear = d[2];
         int age = Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(mYear);

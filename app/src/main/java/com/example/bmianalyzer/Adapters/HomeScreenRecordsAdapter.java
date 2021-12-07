@@ -43,9 +43,9 @@ public class HomeScreenRecordsAdapter extends RecyclerView.Adapter<HomeScreenRec
         Record record = mRecords.get(position);
 
         holder.record_date.setText(record.getDate());
-        holder.record_weight.setText(record.getWeight());
+        holder.record_weight.setText(String.format("%sKg", record.getWeight()));
         holder.record_status.setText(record.getStatus());
-        holder.record_height.setText(record.getHeight());
+        holder.record_height.setText(String.format("%sCm", record.getHeight()));
     }
 
     @Override

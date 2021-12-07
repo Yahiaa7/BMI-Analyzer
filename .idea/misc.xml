@@ -15,12 +15,17 @@
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/recycler_border.xml" value="0.11666666666666667" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/recycler_scrollbar_color.xml" value="0.21095890410958903" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/rounded_button.xml" value="0.875" />
-        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_record.xml" value="0.22" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/spinner_border.xml" value="0.21095890410958903" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/spinner_drop_down.xml" value="0.21095890410958903" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/view_background.xml" value="0.2074074074074074" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_food.xml" value="0.2" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_record.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_complete_sign_up.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/pick_image_options.xml" value="0.19953703703703704" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/record_row.xml" value="0.25" />
       </map>
     </option>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:weightSum="14"
+    android:weightSum="14.5"
 
     tools:context=".Activities.MainActivity">
 
@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="25dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:text="Hi, Username!"
         android:textColor="@color/mBlue"
         android:textSize="30sp" />
@@ -26,7 +26,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:paddingHorizontal="15dp"
 
         android:text="Current Status"
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="15dp"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:paddingHorizontal="15dp"
         android:text="Old Status"
         android:textColor="@color/mBlue"
@@ -64,7 +64,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="15dp"
-        android:layout_weight="6"
+        android:layout_weight="6.7"
         android:background="@drawable/recycler_border"
         android:isScrollContainer="true"
         android:paddingHorizontal="30dp"
