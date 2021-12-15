@@ -23,7 +23,6 @@ import com.example.bmianalyzer.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -172,6 +171,7 @@ public class CompleteSignUpActivity extends AppCompatActivity {
         record_data.put("status", record.getStatus());
         record.setTimestamp(new Date().getTime());
         record_data.put("timestamp", record.getTimestamp());
+        record_data.put("bmi_value", record.getBmi_value());
         DocumentReference record_reference = FirebaseFirestore.getInstance().collection("users").document(UID).collection("records").document(String.valueOf(record.getTimestamp()));
         record_reference.set(record_data).addOnCompleteListener(CompleteSignUpActivity.this, task -> {
             if (!task.isSuccessful()) {

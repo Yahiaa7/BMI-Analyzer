@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:weightSum="11"
-    tools:context=".Activities.AddFood">
+    tools:context=".Activities.EditFood">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/AB"
@@ -32,7 +32,7 @@
         android:layout_marginVertical="40dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Add Food Details"
+        android:text="Edit Food Details"
         android:textColor="@color/mBlue"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/food_name"
+            android:id="@+id/edit_food_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -101,7 +101,7 @@
             android:weightSum="1">
 
             <Spinner
-                android:id="@+id/spinner_category"
+                android:id="@+id/edit_spinner_category"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.85"
@@ -112,7 +112,7 @@
                 android:spinnerMode="dropdown" />
 
             <TextView
-                android:id="@+id/spinner_dropdown"
+                android:id="@+id/edit_spinner_dropdown"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -145,7 +145,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/calorie"
+            android:id="@+id/edit_calorie"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -178,7 +178,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/food_image"
+        android:id="@+id/edit_food_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
@@ -188,7 +188,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TableRow
-        android:id="@+id/edit_food_buttons"
+        android:id="@+id/food_buttons"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
@@ -227,8 +227,9 @@
     </TableRow>
 
     <ProgressBar
-        android:id="@+id/food_progress"
+        android:id="@+id/edit_food_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
+
 </LinearLayout>

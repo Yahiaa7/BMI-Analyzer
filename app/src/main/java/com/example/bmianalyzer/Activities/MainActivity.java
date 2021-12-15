@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         TextView user = findViewById(R.id.user);
         user.setText(String.format("Hi, %s!", User.getUser().getName()));
 
+        TextView status = findViewById(R.id.bmi_Status_Change);
+
         RecyclerView recyclerView = findViewById(R.id.RecyclerView_Records);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -39,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Record> mRecords = new ArrayList<>();
 
-        CollectionReference reference = FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).collection("records");
+        CollectionReference reference = FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(Objects.requireNonNull(FirebaseAuth.getInstance()
+                        .getCurrentUser()).getUid()).collection("records");
 //        reference.orderBy("timestamp", Query.Direction.ASCENDING);
         reference.addSnapshotListener(MainActivity.this, (snapshots, error) -> {
             assert snapshots != null;
@@ -53,13 +58,61 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 Collections.reverse(mRecords);
+                if (mRecords.size() >= 2) {
+                    double difference = mRecords.get(0).getBmi_value() - mRecords.get(1).getBmi_value();
+                    String change = "";
+                    switch (getChange(difference, mRecords.get(0).getStatus())) {
+                        case "LC":
+                            change = "Little Changes";
+                            break;
+                        case "SG":
+                            change = "Still Good";
+                            break;
+                        case "GA":
+                            change = "Go Ahead";
+                            break;
+                        case "BC":
+                            change = "Be Careful";
+                            break;
+                        case "SB":
+                            change = "So Bad";
+                            break;
+                        default:
+                            System.out.println("neverMind");
+                    }
+                    status.setText(String.format("%s (%s)", mRecords.get(0).getStatus(), change));
+                } else {
+                    status.setText(String.format("%s (No Changes Yet!)", mRecords.get(0).getStatus()));
+                }
                 HomeScreenRecordsAdapter recordsAdapter = new HomeScreenRecordsAdapter(mRecords);
                 recyclerView.setAdapter(recordsAdapter);
-//                mRecords.addAll(snapshots.toObjects(Record.class));
-                System.out.println("after:    " + mRecords.size());
             }
         });
 
+    }
+
+    private String getChange(double difference, String status) {
+        double[] ranges = {-1000, -1, -0.6, -0.3, 0, 0.3, 0.6, 1, 1000};
+        String[] mStatus = {"Underweight", "Healthy Weight", "Overweight", "Obesity"};
+        String[][] sc = {{"SB", "SB", "SB", "LC", "LC", "SG", "GA", "GA"},
+                {"SB", "BC", "BC", "LC", "LC", "BC", "BC", "BC"},
+                {"BC", "GA", "SG", "LC", "LC", "BC", "SB", "SB"},
+                {"GA", "GA", "LC", "LC", "BC", "SB", "SB", "SB"}};
+
+        for (int i = 0; i < mStatus.length; i++) {
+            if (status.trim().equalsIgnoreCase(mStatus[i].trim())) {
+                for (int j = 0; j < ranges.length; j++) {
+                    if (IsItIn(ranges[j], ranges[j + 1], difference)) {
+                        return sc[i][j];
+                    }
+                }
+            }
+        }
+        return "";
+    }
+
+    private boolean IsItIn(double in, double ex, double value) {
+        return value >= in && value < ex;
     }
 
     public void AddFood(View view) {
@@ -73,10 +126,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ViewFood(View view) {
+        Intent intent = new Intent(view.getContext(), FoodList.class);
+        startActivity(intent);
     }
 
     public void Logout(View view) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+        Intent intent = new Intent(view.getContext(), SplashScreen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
-
-
 }

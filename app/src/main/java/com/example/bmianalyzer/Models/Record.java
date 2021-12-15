@@ -5,6 +5,7 @@ import java.util.Map;
 public class Record {
     private String weight, height, status, date, time;
     private long timestamp;
+    private double bmi_value;
 
     public Record(String weight, String height, String date, String time) {
 
@@ -65,16 +66,24 @@ public class Record {
         this.timestamp = timestamp;
     }
 
+    public double getBmi_value() {
+        return bmi_value;
+    }
+
+    public void setBmi_value(double bmi_value) {
+        this.bmi_value = bmi_value;
+    }
+
     public String CalculateBMI() {
         int weight = Integer.parseInt(this.getWeight());
         System.out.println("weight = " + weight);
         double height = Integer.parseInt(this.getHeight());
         height = height / 100;
         System.out.println("height = " + height);
-        int agePercentage=User.getUser().getAgePercentage()/100;
+        int agePercentage = User.getUser().getAgePercentage() / 100;
         System.out.println("agePercentage = " + agePercentage);
         double bmi = (weight / Math.pow(height, 2)) * agePercentage;
-
+        this.setBmi_value(bmi);
         if (bmi < 18.5) {
             return "Underweight";
         } else if (bmi >= 18.5 && bmi < 25) {

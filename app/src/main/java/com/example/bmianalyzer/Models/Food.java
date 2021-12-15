@@ -1,6 +1,8 @@
 package com.example.bmianalyzer.Models;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
     private String food_name,food_category,food_calorie,food_image;
 
 

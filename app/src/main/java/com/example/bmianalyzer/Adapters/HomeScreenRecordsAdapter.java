@@ -22,7 +22,7 @@ public class HomeScreenRecordsAdapter extends RecyclerView.Adapter<HomeScreenRec
         void onItemClick(int position);
     }
 
-    public void setOnClickList(HomeScreenRecordsAdapter.onItemClickList listener) {
+    public void setOnClickList(onItemClickList listener) {
         mListener = listener;
     }
 

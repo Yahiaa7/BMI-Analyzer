@@ -21,10 +21,13 @@
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_food.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_record.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_complete_sign_up.xml" value="0.2" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_edit_food.xml" value="0.19953703703703704" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_food_list.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/food_row.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/pick_image_options.xml" value="0.19953703703703704" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/record_row.xml" value="0.25" />
       </map>

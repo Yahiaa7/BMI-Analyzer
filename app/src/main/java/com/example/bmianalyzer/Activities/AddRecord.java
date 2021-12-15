@@ -118,8 +118,11 @@ public class AddRecord extends AppCompatActivity {
         data.put("date", record.getDate());
         data.put("time", record.getTime());
         data.put("timestamp", record.getTimestamp());
+        data.put("bmi_value", record.getBmi_value());
 
-        DocumentReference reference = FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).collection("records").document(String.valueOf(record.getTimestamp()));
+        DocumentReference reference = FirebaseFirestore.getInstance().collection("users")
+                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                .collection("records").document(String.valueOf(record.getTimestamp()));
         reference.set(data).addOnCompleteListener(AddRecord.this, task -> {
             if (task.isSuccessful()) {
                 Intent intent = new Intent(AddRecord.this, MainActivity.class);
