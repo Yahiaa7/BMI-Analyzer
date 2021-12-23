@@ -69,36 +69,18 @@ public class SplashScreen extends AppCompatActivity {
                         User.getUser().setWeight(mUser.getWeight());
                         User.getUser().setHeight(mUser.getHeight());
                         User.getUser().setDateOfBirth(mUser.getDateOfBirth());
-                        System.out.println("splassssssssssssssssssssh user date of birth: " + mUser.getDateOfBirth());
                         Intent intent = new Intent(v.getContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
                     }
                 });
-//                reference.addSnapshotListener(SplashScreen.this, (value, error) -> {
-//                    assert value != null;
-//                    if (value.exists()) {
-//                        User mUser = value.toObject(User.class);
-//                        assert mUser != null;
-//                        User.getUser().setName(mUser.getName());
-//                        User.getUser().setEmail(mUser.getEmail());
-//                        User.getUser().setGender(mUser.getGender());
-//                        User.getUser().setWeight(mUser.getWeight());
-//                        User.getUser().setHeight(mUser.getHeight());
-//                        User.getUser().setDateOfBirth(mUser.getDateOfBirth());
-//                        System.out.println("splashsssssssssssssssssssssssssss user date of birth: " + mUser.getDateOfBirth());
-//                    }
-//                });
-
             } else {
                 Intent intent = new Intent(v.getContext(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
-
         });
-
     }
 }

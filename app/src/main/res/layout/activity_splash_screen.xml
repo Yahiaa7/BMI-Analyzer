@@ -1,55 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mBlue"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="5"
     tools:context=".Activities.SplashScreen">
-
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:paddingHorizontal="30dp"
+        android:contentDescription="@string/logo_image"
         android:src="@drawable/logo" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="BMI"
-        android:textColor="@color/white"
-        android:textSize="100dp"
-        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/splash_pb"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
+        android:layout_height="0dp"
         android:layout_marginTop="50dp"
+        android:layout_weight="0.5"
+        android:gravity="bottom"
         android:indeterminateTint="@color/white"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/splash_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:enabled="false"
+        android:gravity="end|bottom"
+        android:paddingHorizontal="40dp"
+        android:paddingBottom="25dp"
         android:text="@string/Next"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:visibility="visible" />
 
 
-</RelativeLayout>
+</LinearLayout>

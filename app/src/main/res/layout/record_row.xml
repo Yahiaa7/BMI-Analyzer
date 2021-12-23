@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/mBlue">
+    android:background="@color/mBlue"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -27,7 +28,7 @@
                 android:background="@drawable/record_row_text_view_border_top_left"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="20/1/2020"
+                android:text="@string/RandomDate"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -41,7 +42,7 @@
                 android:background="@drawable/record_row_text_view_border_top_right"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="60 Kg"
+                android:text="@string/RandomWeight"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -62,7 +63,7 @@
                 android:background="@drawable/record_row_text_view_border_bottom_left"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Normal"
+                android:text="@string/RandomStatus"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -75,7 +76,7 @@
                 android:background="@drawable/record_row_text_view_border_bottom_right"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="170 Cm"
+                android:text="@string/RandomHeight"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -84,4 +85,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

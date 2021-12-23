@@ -19,22 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHolder> {
 
     private final List<Food> mFood;
-    private onItemClickList mListener;
-
-    public interface onItemClickList {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickList(onItemClickList mListener) {
-        this.mListener = mListener;
-    }
 
     public FoodListAdapter(List<Food> mFood) {
         this.mFood = mFood;
@@ -44,8 +34,8 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View vew = inflater.inflate(R.layout.food_row, viewGroup, false);
-        return new ViewHolder(vew);
+        View view = inflater.inflate(R.layout.food_row, viewGroup, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -83,7 +73,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHo
         return mFood.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView_food_name, textView_food_category, textView_food_calorie, edit_food, delete_food;
 
@@ -97,14 +87,6 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHo
             edit_food = itemView.findViewById(R.id.edit_food_item);
             delete_food = itemView.findViewById(R.id.delete_food_item);
 
-            itemView.setOnClickListener(v -> {
-                if (mListener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener.onItemClick(position);
-                    }
-                }
-            });
         }
     }
 }

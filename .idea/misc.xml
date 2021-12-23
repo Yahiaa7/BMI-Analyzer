@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22146118721461186" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/Logo_background.xml" value="0.21388888888888888" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/add_icon.xml" value="0.12129629629629629" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/border.xml" value="0.21388888888888888" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/line_border.xml" value="0.21095890410958903" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/logo_background.xml" value="0.22146118721461186" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/minus_icon.xml" value="0.21095890410958903" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/record_row_text_view_border.xml" value="0.21388888888888888" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/record_row_text_view_border_bottom_right.xml" value="0.21388888888888888" />
@@ -30,6 +33,9 @@
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/food_row.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/pick_image_options.xml" value="0.19953703703703704" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/record_row.xml" value="0.25" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/mipmap-anydpi-v26/Logo.xml" value="0.21388888888888888" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22146118721461186" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22146118721461186" />
       </map>
     </option>
   </component>

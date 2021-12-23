@@ -32,7 +32,7 @@
         android:layout_marginVertical="40dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Edit Food Details"
+        android:text="@string/edit_food_details"
         android:textColor="@color/mBlue"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="@color/mBlue"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -64,9 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:background="@drawable/border"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="text"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:autofillHints="" />
 
     </TableRow>
 
@@ -86,7 +87,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Category"
+            android:text="@string/category"
             android:textColor="@color/mBlue"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -139,7 +140,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Calorie"
+            android:text="@string/calorie"
             android:textColor="@color/mBlue"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -150,16 +151,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:background="@drawable/border"
-            android:hint="Calorie"
+            android:hint="@string/calorie"
             android:inputType="number"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:autofillHints="" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="cal/g"
+            android:text="@string/cal_g"
             android:textSize="18sp" />
 
     </TableRow>
@@ -172,7 +174,7 @@
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:text="Photo"
+        android:text="@string/photo"
         android:textColor="@color/mBlue"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -185,7 +187,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="4"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/food_image" />
 
     <TableRow
         android:id="@+id/food_buttons"
@@ -207,7 +210,7 @@
             android:layout_weight="1.5"
             android:background="@drawable/recycler_border"
             android:onClick="UploadPhoto"
-            android:text="Upload Photo"
+            android:text="@string/upload_photo"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -219,11 +222,10 @@
             android:layout_weight="1.5"
             android:background="@drawable/recycler_border"
             android:onClick="Save"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
     </TableRow>
 
     <ProgressBar
