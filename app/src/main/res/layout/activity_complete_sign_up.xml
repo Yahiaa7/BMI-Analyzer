@@ -15,7 +15,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="40dp"
         android:gravity="center"
-        android:text="Complete Your Information"
+        android:text="@string/complete_your_information"
         android:textColor="@color/mBlue"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -35,7 +35,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Gender"
+            android:text="@string/gender"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -53,7 +53,7 @@
                 android:layout_marginEnd="15dp"
                 android:buttonTint="@color/mBlue"
                 android:checked="true"
-                android:text="Male"
+                android:text="@string/male"
                 android:textColor="@color/mBlue" />
 
             <RadioButton
@@ -61,12 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/mBlue"
-                android:text="Female"
+                android:text="@string/female"
                 android:textColor="@color/mBlue" />
         </RadioGroup>
 
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -83,7 +82,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Weight"
+            android:text="@string/weight"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -106,11 +105,12 @@
                 android:id="@+id/picker_weight"
                 android:layout_width="87dp"
                 android:layout_height="match_parent"
+                android:autofillHints=""
                 android:background="@drawable/line_border"
                 android:gravity="center"
                 android:inputType="number"
-                android:text="170"
                 android:maxLength="3"
+                android:text="@string/default_weight"
                 android:textDirection="ltr"
                 tools:ignore="LabelFor" />
 
@@ -127,7 +127,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="kg"
+            android:text="@string/kg"
             android:textColor="@color/mBlue"
             android:textStyle="bold" />
     </LinearLayout>
@@ -146,7 +146,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Height"
+            android:text="@string/height"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -168,13 +168,15 @@
 
             <EditText
                 android:id="@+id/picker_height"
+
                 android:layout_width="87dp"
                 android:layout_height="match_parent"
+                android:autofillHints=""
                 android:background="@drawable/line_border"
                 android:gravity="center"
                 android:inputType="number"
-                android:text="70"
                 android:maxLength="3"
+                android:text="@string/default_height"
                 android:textDirection="ltr"
                 tools:ignore="LabelFor" />
 
@@ -191,7 +193,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="cm"
+            android:text="@string/cm"
             android:textColor="@color/mBlue"
             android:textStyle="bold" />
     </LinearLayout>
@@ -209,7 +211,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Date Of Birth"
+            android:text="@string/date_of_birth"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -218,10 +220,11 @@
             android:id="@+id/date"
             android:layout_width="157dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:background="@drawable/border"
             android:focusable="false"
             android:gravity="center"
-            android:hint="DD-MM-YYYY"
+            android:hint="@string/dd_mm_yyyy"
             android:inputType="datetime"
             android:onClick="DatePicker" />
 
@@ -230,15 +233,23 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveData"
         style="@style/Theme.AppCompat"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
-        android:background="@drawable/border"
+        android:background="@drawable/button_border"
         android:backgroundTint="@color/mBlue"
         android:onClick="SaveData"
-        android:text="Save Data"
+        android:text="@string/save_data"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/pb_complete_signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -1,46 +1,38 @@
 package com.example.bmianalyzer.Activities;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.bmianalyzer.Models.Food;
 import com.example.bmianalyzer.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -54,6 +46,8 @@ public class AddFood extends AppCompatActivity {
     Uri uri_photo;
     TextView textView_drop_down;
     ActivityResultLauncher<Intent> getCameraPhoto;
+
+    Food food;
 
     StorageReference storageReference;
 
@@ -84,9 +78,7 @@ public class AddFood extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference("Food Photos");
 
-        textView_drop_down.setOnClickListener(v -> {
-            spinner.performClick();
-        });
+        textView_drop_down.setOnClickListener(v -> spinner.performClick());
 
 
         getPhoto = registerForActivityResult(
@@ -120,6 +112,8 @@ public class AddFood extends AppCompatActivity {
 
 
     public void Save(View view) {
+        food = new Food();
+
         tableRow.setVisibility(View.GONE);
         foodProgressBar.setVisibility(View.VISIBLE);
 
@@ -141,14 +135,13 @@ public class AddFood extends AppCompatActivity {
         }
 
 
-        Food food = new Food(name, category, calorie, mUri);
-
+        food = new Food(name, category, calorie, mUri);
+        food.setFood_timestamp(new Date().getTime());
         HashMap<String, Object> data = new HashMap<>();
         data.put("food_name", food.getFood_name());
         data.put("food_category", food.getFood_category());
         data.put("food_calorie", food.getFood_calorie());
-
-
+        data.put("food_timestamp", food.getFood_timestamp());
         UploadImage(data);
 
     }
@@ -158,20 +151,17 @@ public class AddFood extends AppCompatActivity {
                 .collection("users")
                 .document(UID)
                 .collection("Food")
-                .document(editText_name.getText().toString());
-        documentReference.set(data).addOnCompleteListener(AddFood.this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Intent intent = new Intent(AddFood.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(AddFood.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                    tableRow.setVisibility(View.VISIBLE);
-                    foodProgressBar.setVisibility(View.GONE);
-                }
+                .document(String.valueOf(food.getFood_timestamp()));
+        documentReference.set(data).addOnCompleteListener(AddFood.this, task -> {
+            if (task.isSuccessful()) {
+                Intent intent = new Intent(AddFood.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(AddFood.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                tableRow.setVisibility(View.VISIBLE);
+                foodProgressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -238,10 +228,7 @@ public class AddFood extends AppCompatActivity {
             Intent intent_gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             getPhoto.launch(intent_gallery);
         });
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Upload", (dialog1, which) -> {
-
-            imageView.setImageURI(uri_photo);
-        });
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Upload", (dialog1, which) -> imageView.setImageURI(uri_photo));
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
                 (dialog12, which) -> dialog12.dismiss());
         dialog.show();

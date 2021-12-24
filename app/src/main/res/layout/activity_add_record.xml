@@ -30,7 +30,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="40dp"
         android:gravity="center"
-        android:text="New Record"
+        android:text="@string/new_record"
         android:textColor="@color/mBlue"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -49,7 +49,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Weight"
+            android:text="@string/weight"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -77,9 +77,10 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:maxLength="3"
-                android:text="170"
+                android:text="@string/default_weight"
                 android:textDirection="ltr"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/add"
@@ -95,7 +96,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="kg"
+            android:text="@string/kg"
             android:textColor="@color/mBlue"
             android:textStyle="bold" />
     </LinearLayout>
@@ -114,7 +115,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Height"
+            android:text="@string/height"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -143,9 +144,10 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:maxLength="3"
-                android:text="70"
+                android:text="@string/default_height"
                 android:textDirection="ltr"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/addHeight"
@@ -161,7 +163,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="cm"
+            android:text="@string/cm"
             android:textColor="@color/mBlue"
             android:textStyle="bold" />
     </LinearLayout>
@@ -179,7 +181,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Date"
+            android:text="@string/date"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -191,9 +193,10 @@
             android:background="@drawable/border"
             android:focusable="false"
             android:gravity="center"
-            android:hint="DD-MM-YYYY"
+            android:hint="@string/dd_mm_yyyy"
             android:inputType="datetime"
-            android:onClick="Date_Picker" />
+            android:onClick="Date_Picker"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -210,7 +213,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:gravity="start"
-            android:text="Time"
+            android:text="@string/time"
             android:textColor="@color/mBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -222,23 +225,33 @@
             android:background="@drawable/border"
             android:focusable="false"
             android:gravity="center"
-            android:hint="HH-MM"
+            android:hint="@string/hh_mm"
             android:inputType="datetime"
-            android:onClick="Time_Picker" />
+            android:onClick="Time_Picker"
+            android:autofillHints="" />
 
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveData"
+        android:id="@+id/saveData_addRecord"
         style="@style/Theme.AppCompat"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
-        android:background="@drawable/border"
+        android:background="@drawable/button_border"
         android:backgroundTint="@color/mBlue"
         android:onClick="SaveData"
-        android:text="Save Data"
+        android:text="@string/save_data"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="visible"/>
+
+    <ProgressBar
+        android:id="@+id/pb_complete_addRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30sp"
+        android:visibility="gone" />
+
 </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.bmianalyzer.Adapters.FoodListAdapter;
 import com.example.bmianalyzer.Models.Food;
@@ -48,6 +49,7 @@ public class FoodList extends AppCompatActivity {
             if (snapshots.size() != 0) {
                 for (QueryDocumentSnapshot snapshot : snapshots) {
                     Food food = snapshot.toObject(Food.class);
+                    System.out.println(food.getFood_timestamp());
                     mFood.add(food);
                 }
 //                Collections.reverse(mFood);

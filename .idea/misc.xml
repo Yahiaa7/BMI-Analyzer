@@ -7,6 +7,7 @@
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/Logo_background.xml" value="0.21388888888888888" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/add_icon.xml" value="0.12129629629629629" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/border.xml" value="0.21388888888888888" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/button_border.xml" value="0.21095890410958903" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/line_border.xml" value="0.21095890410958903" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/logo_background.xml" value="0.22146118721461186" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/minus_icon.xml" value="0.21095890410958903" />
@@ -22,7 +23,7 @@
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/spinner_drop_down.xml" value="0.21095890410958903" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/drawable/view_background.xml" value="0.2074074074074074" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_food.xml" value="0.2" />
-        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_record.xml" value="0.2" />
+        <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_add_record.xml" value="0.22" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_complete_sign_up.xml" value="0.2" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_edit_food.xml" value="0.19953703703703704" />
         <entry key="..\:/BMIAnalyzer/app/src/main/res/layout/activity_food_list.xml" value="0.2" />

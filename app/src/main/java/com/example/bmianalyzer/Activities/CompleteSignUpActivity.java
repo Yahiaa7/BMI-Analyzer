@@ -5,8 +5,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,11 +30,13 @@ import java.util.Objects;
 public class CompleteSignUpActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
-    private RadioButton radioButton;
 
     private EditText picker_weight, picker_height, date;
     private int mYear, mMonth, mDay;
     private final Calendar calendar = Calendar.getInstance();
+
+    private ProgressBar progressBar;
+    private Button button_complete_signUp;
 
 
     @Override
@@ -50,38 +53,8 @@ public class CompleteSignUpActivity extends AppCompatActivity {
         mMonth = calendar.get(Calendar.MONTH);
         mDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-//        picker_weight.setMinValue(10);
-//        picker_weight.setMaxValue(200);
-//        picker_weight.setValue(70);
-//        picker_weight.setOnValueChangedListener((picker, oldVal, newVal) -> {
-//
-//        });
-
-
-//        picker_weight.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                Toast.makeText(CompleteSignUpActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-
         picker_height = findViewById(R.id.picker_height);
 
-//        picker_height.setMinValue(50);
-//        picker_height.setMaxValue(250);
-//        picker_height.setValue(170);
-//        picker_height.setOnValueChangedListener((picker, oldVal, newVal) -> {
-//
-//        });
         picker_height.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
                 picker_height.setCursorVisible(true);
@@ -91,30 +64,17 @@ public class CompleteSignUpActivity extends AppCompatActivity {
             }
         });
 
-//        picker_height.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                Toast.makeText(CompleteSignUpActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-
         date = findViewById(R.id.date);
         date.setCursorVisible(false);
         date.setFocusable(false);
 
+        button_complete_signUp = findViewById(R.id.saveData);
+        progressBar = findViewById(R.id.pb_complete_signUp);
+
     }
 
     public void SaveData(View view) {
-        radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
+        RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
 
         String gender = radioButton.getText().toString();
         String weight = picker_weight.getText().toString();
@@ -141,6 +101,8 @@ public class CompleteSignUpActivity extends AppCompatActivity {
             date.requestFocus();
             return;
         }
+        button_complete_signUp.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         User.getUser().setGender(gender);
         User.getUser().setWeight(weight);
@@ -168,6 +130,8 @@ public class CompleteSignUpActivity extends AppCompatActivity {
         record_reference.set(record_data).addOnCompleteListener(CompleteSignUpActivity.this, task -> {
             if (!task.isSuccessful()) {
                 Toast.makeText(CompleteSignUpActivity.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                button_complete_signUp.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -186,6 +150,8 @@ public class CompleteSignUpActivity extends AppCompatActivity {
                 finish();
             } else {
                 Toast.makeText(CompleteSignUpActivity.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                button_complete_signUp.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -224,18 +190,14 @@ public class CompleteSignUpActivity extends AppCompatActivity {
 
     public void DatePicker(View view) {
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(CompleteSignUpActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                view.setFirstDayOfWeek(Calendar.SATURDAY);
-                view.setMaxDate(new Date().getTime());
-                Toast.makeText(CompleteSignUpActivity.this, String.valueOf(new Date().getTime()), Toast.LENGTH_SHORT).show();
-                mYear = year;
-                mMonth = month + 1;
-                mDay = dayOfMonth;
-                String mDate = mDay + "/" + mMonth + "/" + mYear;
-                date.setText(mDate);
-            }
+        DatePickerDialog datePickerDialog = new DatePickerDialog(CompleteSignUpActivity.this, (view1, year, month, dayOfMonth) -> {
+            view1.setFirstDayOfWeek(Calendar.SATURDAY);
+            view1.setMaxDate(new Date().getTime());
+            mYear = year;
+            mMonth = month + 1;
+            mDay = dayOfMonth;
+            String mDate = mDay + "/" + mMonth + "/" + mYear;
+            date.setText(mDate);
         }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }

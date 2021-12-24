@@ -28,7 +28,8 @@ import java.util.regex.Pattern;
 public class SignUpActivity extends AppCompatActivity {
 
     private TextInputEditText editText_name, editText_email, editText_password, editText_re_password;
-    private String name, email, password, re_password;
+    private String name;
+    private String email;
     private Button button_signUp;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
@@ -66,8 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
     public void SignUp(View view) {
         name = Objects.requireNonNull(editText_name.getText()).toString();
         email = Objects.requireNonNull(editText_email.getText()).toString();
-        password = Objects.requireNonNull(editText_password.getText()).toString();
-        re_password = Objects.requireNonNull(editText_re_password.getText()).toString();
+        String password = Objects.requireNonNull(editText_password.getText()).toString();
+        String re_password = Objects.requireNonNull(editText_re_password.getText()).toString();
 
         if (name.isEmpty()) {
             editText_name.setError("Please Fill this Field!");

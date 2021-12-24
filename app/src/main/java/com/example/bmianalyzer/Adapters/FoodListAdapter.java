@@ -63,7 +63,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHo
                     .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())
                             .getUid())
                     .collection("Food")
-                    .document(food.getFood_name());
+                    .document(String.valueOf(food.getFood_timestamp()));
             reference.delete();
         });
     }

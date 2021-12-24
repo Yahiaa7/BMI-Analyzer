@@ -9,8 +9,10 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -33,6 +35,9 @@ public class AddRecord extends AppCompatActivity {
     private EditText picker_weight, picker_height, date, time;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private final Calendar calendar = Calendar.getInstance();
+
+    private Button saveData;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +80,8 @@ public class AddRecord extends AppCompatActivity {
         time.setCursorVisible(false);
         time.setFocusable(false);
 
-
+        saveData = findViewById(R.id.saveData_addRecord);
+        progressBar = findViewById(R.id.pb_complete_addRecord);
     }
 
 
@@ -107,6 +113,9 @@ public class AddRecord extends AppCompatActivity {
             return;
         }
 
+        saveData.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
         Record record = new Record(weight, height, mDate, mTime);
         record.setStatus(record.CalculateBMI());
         record.setTimestamp(new Date().getTime());
@@ -131,6 +140,8 @@ public class AddRecord extends AppCompatActivity {
                 finish();
             } else {
                 Toast.makeText(AddRecord.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                saveData.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }

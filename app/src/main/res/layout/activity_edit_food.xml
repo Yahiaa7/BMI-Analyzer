@@ -191,7 +191,7 @@
         android:contentDescription="@string/food_image" />
 
     <TableRow
-        android:id="@+id/food_buttons"
+        android:id="@+id/edit_food_buttons"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"

@@ -3,13 +3,15 @@ package com.example.bmianalyzer.Models;
 import java.io.Serializable;
 
 public class Food implements Serializable {
-    private String food_name,food_category,food_calorie,food_image;
+    private String food_name, food_category, food_calorie, food_image;
+    private long food_timestamp;
 
 
     public Food() {
     }
 
     public Food(String food_name, String food_category, String food_calorie, String food_image) {
+
         this.food_name = food_name;
         this.food_category = food_category;
         this.food_calorie = food_calorie;
@@ -32,19 +34,11 @@ public class Food implements Serializable {
         return food_image;
     }
 
-    public void setFood_name(String food_name) {
-        this.food_name = food_name;
+    public long getFood_timestamp() {
+        return food_timestamp;
     }
 
-    public void setFood_category(String food_category) {
-        this.food_category = food_category;
-    }
-
-    public void setFood_calorie(String food_calorie) {
-        this.food_calorie = food_calorie;
-    }
-
-    public void setFood_image(String food_image) {
-        this.food_image = food_image;
+    public void setFood_timestamp(long food_timestamp) {
+        this.food_timestamp = food_timestamp;
     }
 }

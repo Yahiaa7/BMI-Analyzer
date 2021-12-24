@@ -19,13 +19,10 @@
     <string name="x">X</string>
     <string name="create_new_account">Create New Account</string>
     <string name="if_you_do_not_already_have_an_account">if you do not already have an account</string>
-    <string name="name">Name</string>
     <string name="e_mail">E-Mail</string>
-    <string name="password">Password</string>
     <string name="re_password">Re-Password</string>
     <string name="create">Create</string>
     <string name="already_have_an_account">Already Have An Account ?</string>
-    <string name="login">Login</string>
     <string name="hi_username">Hi, Username!</string>
     <string name="current_status">Current Status</string>
     <string name="normal_still_good">Normal (Still Good)</string>
@@ -44,14 +41,30 @@
     <string name="food_list">Food List</string>
     <string name="edit_food_details">Edit Food Details</string>
     <string name="name">Name</string>
-    <string name="name">Name</string>
     <string name="category">Category</string>
-    <string name="calorie">Calorie</string>
     <string name="calorie">Calorie</string>
     <string name="cal_g">cal/g</string>
     <string name="photo">Photo</string>
     <string name="upload_photo">Upload Photo</string>
     <string name="save">Save</string>
+    <string name="add_food_details">Add Food Details</string>
+    <string name="complete_your_information">Complete Your Information</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="default_weight">70</string>
+    <string name="kg">kg</string>
+    <string name="height">Height</string>
+    <string name="default_height">170</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="save_data">Save Data</string>
+    <string name="time">Time</string>
+    <string name="hh_mm">HH-MM</string>
+    <string name="dd_mm_yyyy">DD-MM-YYYY</string>
+    <string name="date">Date</string>
+    <string name="cm">cm</string>
+    <string name="new_record">New Record</string>
 
     <string-array name="spinner_entries">
         <item>Protein</item>

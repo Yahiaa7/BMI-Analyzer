@@ -1,12 +1,5 @@
 package com.example.bmianalyzer.Activities;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -25,12 +18,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.bmianalyzer.Models.Food;
 import com.example.bmianalyzer.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -102,9 +99,7 @@ public class EditFood extends AppCompatActivity {
         tableRow = findViewById(R.id.edit_food_buttons);
         foodProgressBar = findViewById(R.id.edit_food_progress);
 
-        textView_drop_down.setOnClickListener(v -> {
-            spinner.performClick();
-        });
+        textView_drop_down.setOnClickListener(v -> spinner.performClick());
 
         getPhoto = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -119,7 +114,6 @@ public class EditFood extends AppCompatActivity {
 
 
     }
-
 
 
     public void Save(View view) {
@@ -143,14 +137,13 @@ public class EditFood extends AppCompatActivity {
             return;
         }
 
-
-        Food food = new Food(name, category, calorie, mUri);
+        Food food1 = new Food(name, category, calorie, mUri);
 
         HashMap<String, Object> data = new HashMap<>();
-        data.put("food_name", food.getFood_name());
-        data.put("food_category", food.getFood_category());
-        data.put("food_calorie", food.getFood_calorie());
-
+        data.put("food_name", food1.getFood_name());
+        data.put("food_category", food1.getFood_category());
+        data.put("food_calorie", food1.getFood_calorie());
+        data.put("food_timestamp", food1.getFood_timestamp());
 
         UploadImage(data);
 
@@ -161,20 +154,17 @@ public class EditFood extends AppCompatActivity {
                 .collection("users")
                 .document(UID)
                 .collection("Food")
-                .document(editText_name.getText().toString());
-        documentReference.set(data).addOnCompleteListener(EditFood.this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Intent intent = new Intent(EditFood.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(EditFood.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                    tableRow.setVisibility(View.VISIBLE);
-                    foodProgressBar.setVisibility(View.GONE);
-                }
+                .document(String.valueOf(food.getFood_timestamp()));
+        documentReference.update(data).addOnCompleteListener(EditFood.this, task -> {
+            if (task.isSuccessful()) {
+                Intent intent = new Intent(EditFood.this, FoodList.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(EditFood.this, "Error!\n" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                tableRow.setVisibility(View.VISIBLE);
+                foodProgressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -201,6 +191,7 @@ public class EditFood extends AppCompatActivity {
 
 
                                         } else {
+
                                             Toast.makeText(EditFood.this, "Error!\n" +
                                                             Objects.requireNonNull(task1.getException()).getMessage(),
                                                     Toast.LENGTH_SHORT).show();
@@ -212,9 +203,8 @@ public class EditFood extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
-
         } else {
-            Toast.makeText(EditFood.this, "Please upload an image!", Toast.LENGTH_SHORT).show();
+            UploadData(data);
         }
     }
 
@@ -241,10 +231,7 @@ public class EditFood extends AppCompatActivity {
             Intent intent_gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             getPhoto.launch(intent_gallery);
         });
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Upload", (dialog1, which) -> {
-
-            imageView.setImageURI(uri_photo);
-        });
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Upload", (dialog1, which) -> imageView.setImageURI(uri_photo));
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
                 (dialog12, which) -> dialog12.dismiss());
         dialog.show();
